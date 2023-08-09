@@ -4,15 +4,15 @@ Examen Final de Frontend Avanzado
 
 ## Indice
 
-- [Requisitos](#requisitos)
-  - [Condiciones mínimas de aprobación](#condiciones-mínimas-de-aprobación)
-  - [Aspectos que modifican la valoración final de la nota](#aspectos-que-modifican-la-valoración-final-de-la-nota)
-- [Funcionalidades](#funcionalidades)
-- [Desarrollo](#desarrollo)
-- [API](#api)
-- [Entrega](#entrega)
-  - [Fecha de Entrega](#fecha-de-entrega)
-  - [Formato de Entrega](#formato-de-entrega)
+- [fe-avanzado-final](#fe-avanzado-final)
+  - [Indice](#indice)
+  - [Requisitos](#requisitos)
+    - [Condiciones de aprobación](#condiciones-de-aprobación)
+    - [Aspectos que modifican la valoración final de la nota](#aspectos-que-modifican-la-valoración-final-de-la-nota)
+  - [Funcionalidades](#funcionalidades)
+  - [Desarrollo](#desarrollo)
+  - [API](#api)
+    - [Formato de Entrega](#formato-de-entrega)
 
 ## Requisitos
 
@@ -26,7 +26,7 @@ git clone https://github.com/fabiodrizzt/fe-avanzado-final
 cd fe-avanzado-final
 
 # elimina los links al repositorio original
-git remove remote origin
+git remote remove origin
 
 # Agrega el link al repositorio de tu cuenta de github, reemplaza <tuusuario> por tu cuenta
 git remote add origin https://github.com/<tuusuario>/fe-avanzado-final
