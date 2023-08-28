@@ -9,17 +9,15 @@ import "./index.css";
 import App from "./App";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<App />} >
+        <Route path="/" element={<App />}>
           <Route path="/home" element={<Home />} />
           <Route path="/Contact" element={<Contact />} />
           <Route path="/favs" element={<Favs />} />
         </Route>
       </Routes>
-    </BrowserRouter>,
+    </BrowserRouter>
   </React.StrictMode>
-
 );
