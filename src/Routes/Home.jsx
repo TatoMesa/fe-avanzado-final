@@ -3,24 +3,24 @@
 import { useContext } from "react";
 import {ContextGlobal} from "../Components/utils/global.context.jsx";  
 import Card from "../Components/Card.jsx";
+import { styled } from "styled-components";
 
 //Este componente debera ser estilado como "dark" o "light" dependiendo del theme del Context
 
 
-
-
 const Home = () => {
+  const { state } = useContext(ContextGlobal);
 
-  
-  const {state} = useContext(ContextGlobal)
+  const Container = styled.div`
+    background-color: ${state.theme.bgc};
+    color: ${state.theme.text};
+  `;
 
-    return (
-    <main className="">
+  return (
+    <Container>
       <div className="card-grid">
-        <p>{state.theme.text}</p>
-        
         {state.loading && <p>Loading...</p>}
-        {state.error && <p>Error: {state.error}</p>}  
+        {state.error && <p>Error: {state.error}</p>}
         {state.dentist.map((element, id) => {
           return (
             <Card key={id} {...element}>
@@ -29,7 +29,7 @@ const Home = () => {
           );
         })}
       </div>
-    </main>
+    </Container>
   );
 };
 

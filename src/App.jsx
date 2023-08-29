@@ -7,14 +7,18 @@ import Home from "./Routes/Home";
 
 
 function App() {
+
+  
+
+
   return (
-      <div className="App">
+      
        <ContextProvider >
           <Navbar />
           <Outlet />
           <Footer />
         </ContextProvider>
-      </div>
+   
 
   );
 }

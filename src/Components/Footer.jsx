@@ -1,9 +1,21 @@
+import { useContext } from "react";
+import { styled } from "styled-components";
+import { ContextGlobal } from "./utils/global.context";
+
 const Footer = () => {
+
+  const {state} = useContext(ContextGlobal)
+
+  const Footer = styled.footer`
+  background-color: ${state.theme.bgc};
+  color: ${state.theme.text};
+`;
+
   return (
-    <footer>
+    <Footer>
       <p>Powered by</p>
       <img src="./images/DM.png" alt="DM-logo" />
-    </footer>
+    </Footer>
   );
 };
 
