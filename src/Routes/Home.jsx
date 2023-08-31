@@ -21,7 +21,7 @@ const Home = () => {
       <div className="card-grid">
         {state.loading && <p>Loading...</p>}
         {state.error && <p>Error: {state.error}</p>}
-        {state.dentist.map((element, id) => {
+        {state.dentists.map((element, id) => {
           return (
             <Card key={id} {...element}>
               {/* Aqui deberias renderizar las cards */}

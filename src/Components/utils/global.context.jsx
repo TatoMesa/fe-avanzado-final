@@ -4,7 +4,7 @@ import { Themes } from "./themes";
 const initialState = {
   loading: false,
   error: null,
-  dentist: [],
+  dentists: [],
   theme: Themes.light,
 };
 
@@ -13,7 +13,7 @@ const reducer = (state, action) => {
     case 'FETCH_START':
       return { ...state, loading: true };
     case 'FETCH_SUCCESS':
-      return { ...state, loading: false, dentist: action.payload };
+      return { ...state, loading: false, dentists: action.payload };
     case 'FETCH_ERROR':
       return { ...state, loading: false, error: action.payload };
     case 'SET_THEME':
@@ -28,7 +28,7 @@ export const ContextGlobal = createContext(initialState);
 export const ContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  const fetchDentist = useCallback(async () => {
+  const fetchDentists = useCallback(async () => {
     dispatch({ type: 'FETCH_START' });
     try {
       const response = await fetch('https://jsonplaceholder.typicode.com/users/');
@@ -44,12 +44,12 @@ export const ContextProvider = ({ children }) => {
   },[]);
 
    useEffect(() => {
-    fetchDentist();
-  }, [fetchDentist]);
+    fetchDentists();
+  }, [fetchDentists]);
 
-  const memoizedValue = useMemo(() => ({ state, fetchDentist, setTheme }), [
+  const memoizedValue = useMemo(() => ({ state, fetchDentists, setTheme }), [
     state,
-    fetchDentist,
+    fetchDentists,
     setTheme,
   ]);
 
