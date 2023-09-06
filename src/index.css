@@ -12,11 +12,14 @@ code {
     monospace;
 }
 .favButton {
-  background-color: rgba(136, 136, 136, 0.116);
+  
   padding: 10px;
   border: none;
   width: 100%;
   cursor: pointer;
+}
+.favButton:active{
+  background-color: white;
 }
 
 h1 {
@@ -36,6 +39,7 @@ a {
   text-decoration: none;
   margin: 5px;
   cursor: pointer;
+  font-size:large;
 }
 a:hover {
   color: rgb(136, 136, 136);
@@ -44,24 +48,26 @@ a:hover {
 footer {
   display: flex;
   justify-content: center;
-  align-items: stretch;
+  align-items: center;
   text-align: center;
   padding: 2rem;
-  position: relative;
+  position:relative;
   bottom: 0;
   width: 100%;
   height: 40px;
+  margin-left: auto;
+  margin-right: auto;
  
 }
 
 footer > img {
   width: 200px;
-  margin-left: px;
+  
 
 }
 footer > p {
-  margin: 0;
-  padding-top: 0.7rem;
+  margin: 5px;
+  
 }
 
 form {
@@ -84,7 +90,12 @@ form {
 }
 
 .card:hover {
-  border: 0.5px solid rgb(206, 217, 142);
+  border: 0.5px solid rgb(255, 255, 255);
+}
+
+.card > img{
+  width: 90%;
+
 }
 
 .card-grid {
@@ -103,23 +114,17 @@ table {
   width: 100%;
   display: table;
   border: 1px solid #ccc;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 td,
 th {
-  border: 1px solid #dddddd;
-  text-align: left;
+  border: 2px solid #dddddd;
+  text-align: center;
   padding: 8px;
+  font-size: large;
 }
 
-tr:nth-child(even) {
-  background-color: #dddddd;
-}
 
-.dark {
-  background-color: #12121296;
-  color: white;
-}
-.dark > a {
-  color: white;
-}
+

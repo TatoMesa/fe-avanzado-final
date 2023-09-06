@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { styled } from "styled-components";
 import { ContextGlobal } from "./utils/global.context";
 
+
 const Footer = () => {
 
   const {state} = useContext(ContextGlobal)
@@ -11,9 +12,11 @@ const Footer = () => {
   color: ${state.theme.text};
 `;
 
+
+
   return (
     <Footer>
-      <p>Powered by</p>
+      <h3>Powered by</h3>
       <img src="./images/DM.png" alt="DM-logo" />
     </Footer>
   );
