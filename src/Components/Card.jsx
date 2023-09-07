@@ -1,56 +1,92 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useMemo, useReducer} from "react";
 import { Link } from "react-router-dom";
 import { styled } from "styled-components";
 import { ContextGlobal } from "./utils/global.context";
+
 
 
 const Card = ( dentist) => {
 
   const { state } = useContext(ContextGlobal);
   
-  const [buttonPressed, setButtonPressed] = useState(false);
-
-  const Container = styled.div`
+  const StyledLink = styled(Link)`
     background-color: ${state.theme.bgc};
     color: ${state.theme.text};
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+    width: 200px;
+    padding: 0.5rem 0.5rem 0 0.5rem;
+    border: 0.5px solid rgb(136, 136, 136);
   `;
   const Button = styled.button`
-    background-color: ${props => props.pressed ? 'green' : 'red'};
+    background-color: ${props => props.pressed ? 'red' : 'white'};
+    position: relative;
+    top: -12%;
+    left: 70%;
+    width: 40px;
   `;
+  
+  const initialState = {
+    saved: false
+  };
+  
+  function reducer(state, action) {
+    switch (action.type) {
+      case 'SAVE':
+        return { ...state, saved: !state.saved };
+      case 'RECOVER':
+      return { ...state, saved: action.payload };
+      default:
+        throw new Error();
+    }
+  }
+  
 
+  const [newState, dispatch] = useReducer(reducer, initialState);
+
+  useEffect(() => {
+    const storedDentist = JSON.parse(localStorage.getItem("featuredDentist")) || [];
+    const isStored = storedDentist.some(u => u.id === dentist.id);
+    dispatch({ type: 'RECOVER', payload: isStored });
+  }, [dentist.id]);
+
+   
   const addFav = () => {
     // Aqui iria la logica para agregar la Card en el localStorage
 
     const storedDentist = JSON.parse(localStorage.getItem("featuredDentist")) || [];
-    const index = storedDentist.findIndex((element) => element.id === dentist.id);
-
-    if (index !== -1) {
+    if (newState.saved) {
+      console.log(newState);
       const newDentist = storedDentist.filter((elemento) => elemento.id !== dentist.id);
       localStorage.setItem("featuredDentist", JSON.stringify(newDentist));
     } else {
+      console.log(newState);
       storedDentist.push(dentist);
       localStorage.setItem("featuredDentist", JSON.stringify(storedDentist));
     }
-    setButtonPressed(!buttonPressed);
+   dispatch({ type: 'SAVE' })
   };
+
+  
 
  {/* En cada card deberan mostrar en name - username y el id */}
  {/* No debes olvidar que la Card a su vez servira como Link hacia la pagina de detalle */}
  {/* Ademas deberan integrar la logica para guardar cada Card en el localStorage */}
 
   return (
-    <Container>
-      <div className="card">
-        <Link to={`/detail/${dentist.id}`}>
-          <img src="./" alt="" />
-          <h2>{dentist.name}</h2>{" "}
-          <h2>{dentist.username}</h2>{" "}
-          <h2>{dentist.id}</h2>
-        </Link>
-        <Button onClick={addFav} className="favButton" pressed={buttonPressed}>
-        {buttonPressed ? 'Recuperar' : 'Guardar'}</Button>
-      </div>
-    </Container>
+    <div>
+      <StyledLink to={`/detail/${dentist.id}`}>
+        <img src="/public/images/doctor.jpg" alt="Imagen Doctor" />
+        <h2>{dentist.name}</h2> 
+        <h2>{dentist.username}</h2>
+        <h2>{dentist.id}</h2>
+      </StyledLink>
+      <Button onClick={addFav} className="favButton" pressed = {newState.saved} >
+        {newState.saved ? "Recuperar" : "Guardar"}
+      </Button>
+    </div>
   );
 };
 
