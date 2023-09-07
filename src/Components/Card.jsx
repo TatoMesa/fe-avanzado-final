@@ -34,15 +34,17 @@ const Card = ( dentist) => {
     setButtonPressed(!buttonPressed);
   };
 
+ {/* En cada card deberan mostrar en name - username y el id */}
+ {/* No debes olvidar que la Card a su vez servira como Link hacia la pagina de detalle */}
+ {/* Ademas deberan integrar la logica para guardar cada Card en el localStorage */}
+
   return (
     <Container>
       <div className="card">
         <Link to={`/detail/${dentist.id}`}>
-          {/* En cada card deberan mostrar en name - username y el id */}
+          <img src="./" alt="" />
           <h2>{dentist.name}</h2>{" "}
-          {/* No debes olvidar que la Card a su vez servira como Link hacia la pagina de detalle */}
           <h2>{dentist.username}</h2>{" "}
-          {/* Ademas deberan integrar la logica para guardar cada Card en el localStorage */}
           <h2>{dentist.id}</h2>
         </Link>
         <Button onClick={addFav} className="favButton" pressed={buttonPressed}>
