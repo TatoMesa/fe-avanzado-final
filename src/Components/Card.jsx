@@ -1,7 +1,10 @@
-import { useContext, useEffect, useMemo, useReducer} from "react";
+import { useContext, useEffect, useReducer} from "react";
 import { Link } from "react-router-dom";
 import { styled } from "styled-components";
 import { ContextGlobal } from "./utils/global.context";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
+
 
 
 
@@ -21,11 +24,13 @@ const Card = ( dentist) => {
     border: 0.5px solid rgb(136, 136, 136);
   `;
   const Button = styled.button`
-    background-color: ${props => props.pressed ? 'red' : 'white'};
+    background-color: ${state.theme.bgc};
+    color: ${props => props.pressed ? 'red' : 'white'};
     position: relative;
     top: -12%;
     left: 70%;
-    width: 40px;
+    border: none;
+    font-size: 25px;
   `;
   
   const initialState = {
@@ -83,8 +88,8 @@ const Card = ( dentist) => {
         <h2>{dentist.username}</h2>
         <h2>{dentist.id}</h2>
       </StyledLink>
-      <Button onClick={addFav} className="favButton" pressed = {newState.saved} >
-        {newState.saved ? "Recuperar" : "Guardar"}
+      <Button onClick={addFav} pressed = {newState.saved} >
+        <FontAwesomeIcon icon={faStar} />
       </Button>
     </div>
   );
