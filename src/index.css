@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  padding: 0;
 }
 
 code {
@@ -12,7 +13,6 @@ code {
     monospace;
 }
 .favButton {
-  
   padding: 10px;
   border: none;
   width: 100%;
@@ -24,14 +24,26 @@ code {
 
 h1 {
   text-align: center;
+  margin: 0;
+  padding: 1rem;
+  font-size: 3rem;
+}
+
+h2{
+  width: auto;
+  height: 1rem;
+  padding: 5px;
+  font-size: 1.7rem;
 }
 
 nav {
   display: flex;
   width: 100%;
   justify-content: space-evenly;
-  padding: 1rem;
+  padding: 2rem;
   align-items: baseline;
+  margin: 0;
+ 
 }
 
 a {
@@ -39,7 +51,7 @@ a {
   text-decoration: none;
   margin: 5px;
   cursor: pointer;
-  font-size:large;
+  font-size: 1.5rem;
 }
 a:hover {
   color: rgb(136, 136, 136);
@@ -81,10 +93,9 @@ form {
 
 .card {
   display: flex;
-  justify-content: space-around;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  width: 200px;
+  flex-direction: column;
   padding: 0.5rem 0.5rem 0 0.5rem;
   border: 0.5px solid rgb(136, 136, 136);
 }
