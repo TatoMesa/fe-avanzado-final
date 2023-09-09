@@ -10,7 +10,7 @@ import {ContextGlobal} from "../Components/utils/global.context.jsx";
 {/* Deberan renderizar una Card por cada uno de ellos */}
 
 const Favs = () => {
-  const { state } = useContext(ContextGlobal); //sc-dmBjiZ
+  const { state } = useContext(ContextGlobal); 
   const Container = styled.div`
     background-color: ${state.theme.bgc};
     color: ${state.theme.text};

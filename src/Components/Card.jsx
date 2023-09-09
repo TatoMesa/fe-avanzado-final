@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { styled } from "styled-components";
 import { ContextGlobal } from "./utils/global.context";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStar } from "@fortawesome/free-solid-svg-icons";
+import { faListSquares, faStar } from "@fortawesome/free-solid-svg-icons";
 
 
 
@@ -11,6 +11,7 @@ import { faStar } from "@fortawesome/free-solid-svg-icons";
 const Card = ( dentist) => {
 
   const { state } = useContext(ContextGlobal);
+
   
   const StyledLink = styled(Link)`
     background-color: ${state.theme.bgc};
@@ -25,35 +26,32 @@ const Card = ( dentist) => {
   `;
   const Button = styled.button`
     background-color: ${state.theme.bgc};
-    color: ${props => props.pressed ? 'red' : 'white'};
+    color: ${props => props.$pressed ? 'red' : 'white'};
     position: relative;
     top: -12%;
     left: 70%;
     border: none;
     font-size: 25px;
   `;
-  
-  const initialState = {
-    saved: false
-  };
-  
+    
   function reducer(state, action) {
     switch (action.type) {
-      case 'SAVE':
-        return { ...state, saved: !state.saved };
-      case 'RECOVER':
-      return { ...state, saved: action.payload };
+      case "SAVE":
+        return !state;
+      case "RECOVER":
+        return action.payload ;
       default:
         throw new Error();
     }
   }
   
-
+  const initialState = false ;
   const [newState, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
     const storedDentist = JSON.parse(localStorage.getItem("featuredDentist")) || [];
     const isStored = storedDentist.some(u => u.id === dentist.id);
+   
     dispatch({ type: 'RECOVER', payload: isStored });
   }, [dentist.id]);
 
@@ -62,17 +60,20 @@ const Card = ( dentist) => {
     // Aqui iria la logica para agregar la Card en el localStorage
 
     const storedDentist = JSON.parse(localStorage.getItem("featuredDentist")) || [];
-    if (newState.saved) {
-      console.log(newState);
+    if (newState) {
       const newDentist = storedDentist.filter((elemento) => elemento.id !== dentist.id);
       localStorage.setItem("featuredDentist", JSON.stringify(newDentist));
     } else {
-      console.log(newState);
       storedDentist.push(dentist);
       localStorage.setItem("featuredDentist", JSON.stringify(storedDentist));
     }
    dispatch({ type: 'SAVE' })
   };
+
+
+
+
+
 
   
 
@@ -88,7 +89,7 @@ const Card = ( dentist) => {
         <h2>{dentist.username}</h2>
         <h2>{dentist.id}</h2>
       </StyledLink>
-      <Button onClick={addFav} pressed = {newState.saved} >
+      <Button onClick={addFav} $pressed={newState} >
         <FontAwesomeIcon icon={faStar} />
       </Button>
     </div>
