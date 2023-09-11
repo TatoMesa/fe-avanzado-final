@@ -20,6 +20,7 @@ const Home = () => {
     <Container>
       <h1>Nomina Completa de Dentistas</h1>
       <div className="card-grid">
+        
         {state.loading && <p>Loading...</p>}
         {state.error && <p>Error: {state.error}</p>}
         {state.dentists.map((element, id) => {

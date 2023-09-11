@@ -3,14 +3,14 @@ import { Link } from "react-router-dom";
 import { styled } from "styled-components";
 import { ContextGlobal } from "./utils/global.context";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faListSquares, faStar } from "@fortawesome/free-solid-svg-icons";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
 
 
 
 
 const Card = ( dentist) => {
 
-  const { state } = useContext(ContextGlobal);
+  const { state, setSize } = useContext(ContextGlobal);
 
   
   const StyledLink = styled(Link)`
@@ -51,11 +51,9 @@ const Card = ( dentist) => {
   useEffect(() => {
     const storedDentist = JSON.parse(localStorage.getItem("featuredDentist")) || [];
     const isStored = storedDentist.some(u => u.id === dentist.id);
-   
     dispatch({ type: 'RECOVER', payload: isStored });
   }, [dentist.id]);
 
-   
   const addFav = () => {
     // Aqui iria la logica para agregar la Card en el localStorage
 
@@ -63,19 +61,14 @@ const Card = ( dentist) => {
     if (newState) {
       const newDentist = storedDentist.filter((elemento) => elemento.id !== dentist.id);
       localStorage.setItem("featuredDentist", JSON.stringify(newDentist));
+      setSize(state.sizeLocalStorage -1);
     } else {
       storedDentist.push(dentist);
       localStorage.setItem("featuredDentist", JSON.stringify(storedDentist));
+      setSize(state.sizeLocalStorage +1);
     }
    dispatch({ type: 'SAVE' })
   };
-
-
-
-
-
-
-  
 
  {/* En cada card deberan mostrar en name - username y el id */}
  {/* No debes olvidar que la Card a su vez servira como Link hacia la pagina de detalle */}

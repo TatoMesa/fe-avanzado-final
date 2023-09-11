@@ -5,6 +5,7 @@ const initialState = {
   loading: false,
   error: null,
   dentists: [],
+  sizeLocalStorage: JSON.parse(localStorage.getItem("featuredDentist")).length,
   theme: Themes.light,
 };
 
@@ -18,6 +19,8 @@ const reducer = (state, action) => {
       return { ...state, loading: false, error: action.payload };
     case 'SET_THEME':
       return { ...state, theme: action.payload };
+    case 'SET_SIZE':
+      return { ...state, sizeLocalStorage: action.payload }; 
     default:
       return state;
   }
@@ -43,14 +46,19 @@ export const ContextProvider = ({ children }) => {
     dispatch({ type: 'SET_THEME', payload: theme });
   },[]);
 
+  const setSize = useCallback((sizeLocalStorage) => {
+    dispatch({ type: 'SET_SIZE', payload: sizeLocalStorage });
+  },[]);
+
    useEffect(() => {
     fetchDentists();
   }, [fetchDentists]);
 
-  const memoizedValue = useMemo(() => ({ state, fetchDentists, setTheme }), [
+  const memoizedValue = useMemo(() => ({ state, fetchDentists, setTheme, setSize}), [
     state,
     fetchDentists,
     setTheme,
+    setSize,
   ]);
 
   return (
