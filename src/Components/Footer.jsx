@@ -16,7 +16,7 @@ const Footer = () => {
 
   return (
     <Footer>
-      <h3>Powered by</h3>
+      <h3> Powered by </h3>
       <img src="./images/DM.png" alt="DM-logo" />
     </Footer>
   );

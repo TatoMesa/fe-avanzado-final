@@ -1,8 +1,10 @@
 import { useContext } from "react";
-import {Link} from "react-router-dom";
-import {ContextGlobal} from "../Components/utils/global.context.jsx"; 
+import { Link } from "react-router-dom";
+import { ContextGlobal } from "../Components/utils/global.context.jsx"; 
 import { Themes } from "./utils/themes.js";
 import { styled } from "styled-components";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 //Este componente debera ser estilado como "dark" o "light" dependiendo del theme del Context
 
 const Navbar = () => {
@@ -18,14 +20,24 @@ const Navbar = () => {
     color: ${state.theme.text};
   `;
 
-
+const Button = styled.button`
+background-color: ${state.theme.bgc};
+color: ${state.theme.color};
+border: none;
+font-size: 20px;
+`;
+ 
   const handleTheme = () => {
     if (state.theme === Themes.light) {
       setTheme(Themes.dark);
+      
     } else {
       setTheme(Themes.light);
+      
     }
   };
+
+  
 
   return (
     <Navbar>
@@ -34,7 +46,9 @@ const Navbar = () => {
       <StyledLink to="/home">Home</StyledLink>
       <StyledLink to="/contact">Contacto</StyledLink>
       <StyledLink to="/favs">Destacados</StyledLink>
-      <button onClick={handleTheme}>Modo Oscuro</button>
+      <Button onClick={handleTheme} >
+        <FontAwesomeIcon icon = {state.theme.icons}/>
+      </Button>
     </Navbar>
   );
 };

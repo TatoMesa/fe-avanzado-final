@@ -21,8 +21,9 @@ const Card = ( dentist) => {
     flex-direction: column;
     align-items: center;
     width: 200px;
-    padding: 0.5rem 0.5rem 0 0.5rem;
-    border: 0.5px solid rgb(136, 136, 136);
+    padding: 0.5rem;
+    border: 0.5px solid ${state.theme.text};
+    border-radius: 10px;
   `;
   const Button = styled.button`
     background-color: ${state.theme.bgc};
@@ -76,7 +77,7 @@ const Card = ( dentist) => {
 
   return (
     <div>
-      <StyledLink to={`/detail/${dentist.id}`}>
+      <StyledLink claseName ="card" to={`/detail/${dentist.id}`}>
         <img src="/public/images/doctor.jpg" alt="Imagen Doctor" />
         <h2>{dentist.name}</h2> 
         <h2>{dentist.username}</h2>
