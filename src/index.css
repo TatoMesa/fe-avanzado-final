@@ -28,13 +28,19 @@ h1 {
   padding: 1rem;
   font-size: 3rem;
 }
-
 h2{
   width: auto;
   height: 1rem;
   padding: 5px;
   font-size: 1.7rem;
 }
+h3{
+  width: auto;
+  height: 0.8rem;
+  padding: 3px;
+  font-size: 1.3rem;
+}
+
 
 nav {
   display: flex;
