@@ -5,14 +5,10 @@ import { ContextGlobal } from "./utils/global.context";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 
-
-
-
 const Card = ( dentist) => {
 
   const { state, setSize } = useContext(ContextGlobal);
-
-  
+ 
   const StyledLink = styled(Link)`
     background-color: ${state.theme.bgc};
     color: ${state.theme.text};
@@ -25,6 +21,7 @@ const Card = ( dentist) => {
     border: 0.5px solid ${state.theme.text};
     border-radius: 10px;
   `;
+
   const Button = styled.button`
     background-color: ${state.theme.bgc};
     color: ${props => props.$pressed ? 'red' : 'white'};
@@ -45,9 +42,9 @@ const Card = ( dentist) => {
         throw new Error();
     }
   }
-  
   const initialState = false ;
   const [newState, dispatch] = useReducer(reducer, initialState);
+  
 
   useEffect(() => {
     const storedDentist = JSON.parse(localStorage.getItem("featuredDentist")) || [];

@@ -5,8 +5,9 @@ import  Form  from "../Components/Form"
 //Este componente debera ser estilado como "dark" o "light" dependiendo del theme del Context
 
 const Contact = () => {
-  const { state } = useContext(ContextGlobal);
-  const StyledDiv = styled.div`
+
+const { state } = useContext(ContextGlobal);
+const StyledDiv = styled.div`
     background-color: ${state.theme.bgc};
     color: ${state.theme.text};
     display: flex;
@@ -14,14 +15,14 @@ const Contact = () => {
     flex-direction: column;
     align-items: center;
     width: 100%;
-    padding: 0.5rem;
-  `;
-  
+    padding-top: 15px; 
+    padding-bottom: 15px; 
+`;
 
   return (
     <StyledDiv>
-      <h2>¿Quiere saber más?</h2>
-      <h3>Envíanos tus preguntas y nos pondremos en contacto contigo</h3>
+      <h2>¿Queres saber más?</h2>
+      <h3>Envíanos tu pregunta y nos pondremos en contacto via mail</h3>
       <Form />
     </StyledDiv>
   );

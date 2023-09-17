@@ -11,7 +11,7 @@ const Input = styled.input`
   padding: 10px;
   margin-top: 10px;
   border-radius: 5px;
-  font-size: 1em;
+  font-size: 1.2em;
   border: 1px solid ${(props) => (props.isValid ? "green" : "red")};
   color: ${(props) => (props.isValid ? "green" : "red")};
 `;
@@ -29,10 +29,10 @@ const Button = styled.button`
   width: 45%;
   color: #eee;
   border-radius: 5px;
-  font-size: 1em;
+  font-size: 1.1em;
   letter-spacing: 1px;
-  padding: 1px;
-  background-color: ${({ main }) => (main ? "#7367f0" : "#ea5455")};
+  padding: 3px;
+  background-color: ${({ main }) => (main ? "green" : "red")};
 `;
 
 const Form = () => {
@@ -48,29 +48,29 @@ const Form = () => {
   const onChangeEmail = (e) => setEmail(e.target.value);
   const onChangeQuestion = (e) => setQuestion(e.target.value);
   
-  const handleCleanUp = (e) => {
+  const handleCleanUp = () => {
     setName("");
     setEmail("");
     setQuestion("");
-    e.target.reset();
   };
 
   const onSubmitForm = (e) => {
-   {/* if (name && emailRegex.test(email) && question) {
-      alert(`Gracias ${name}, te contactaremos cuando antes vía mail.`);
-    } */}
-    if (name)
-      if (emailRegex.test(email))
-        if (question)
+    
+    if (name){
+      if (emailRegex.test(email)){
+        if (question){
           alert(`Gracias ${name}, te contactaremos cuando antes vía mail.`);
+          handleCleanUp(e);
+        }
         else
           alert(`Por favor ingrese una pregunta`);
+      }  
       else
         alert(`El campo de mail debe tener el formato xxxx@xxx.xx`);
+    }
     else
-    alert(`Por favor ingrese un nombre`)
-    e.target.reset();
-    e.preventDefault();
+      alert(`Por favor ingrese un nombre`)
+    e.preventDefault();  
   };
 
   return (
@@ -83,7 +83,7 @@ const Form = () => {
         isValid={name !== ""}
       />
       <Input
-        type="email"
+        type="text"
         placeholder="Email"
         value={email}
         onChange={onChangeEmail}
@@ -97,7 +97,7 @@ const Form = () => {
         isValid={question !== ""}
       />
       <ButtonContainer>
-        <Button onClick={handleCleanUp} main={false}>Cancelar</Button>
+        <Button onClick= {handleCleanUp} type="button">Cancelar</Button>
         <Button form="form_contact" type="submit" main={true}>Enviar</Button>
       </ButtonContainer>
     </FormStyled>

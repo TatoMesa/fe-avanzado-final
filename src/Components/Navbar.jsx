@@ -14,30 +14,28 @@ const Navbar = () => {
   const Navbar = styled.nav`
     background-color: ${state.theme.bgc};
     color: ${state.theme.text};
+    border-bottom: 0.5px solid ${state.theme.text};
+    border-top: 0.5px solid ${state.theme.text};
   `;
 
   const StyledLink = styled(Link)`
     color: ${state.theme.text};
   `;
 
-const Button = styled.button`
-background-color: ${state.theme.bgc};
-color: ${state.theme.color};
-border: none;
-font-size: 20px;
-`;
+  const Button = styled.button`
+    background-color: ${state.theme.bgc};
+    color: ${state.theme.color};
+    border: none;
+    font-size: 20px;
+  `;
  
   const handleTheme = () => {
     if (state.theme === Themes.light) {
       setTheme(Themes.dark);
-      
     } else {
       setTheme(Themes.light);
-      
     }
   };
-
-  
 
   return (
     <Navbar>

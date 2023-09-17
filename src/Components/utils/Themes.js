@@ -1,4 +1,3 @@
-
 import { faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
 
 const LightTheme ={
@@ -14,7 +13,6 @@ const DarkTheme = {
   icons: faSun,
   color: "yellow",
 };
-
 
 export const Themes = {
   light: LightTheme,

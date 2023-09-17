@@ -3,14 +3,7 @@ import Navbar from "./Components/Navbar";
 import { Outlet } from "react-router-dom";
 import { ContextProvider } from "./Components/utils/global.context";
 
-
-
-
 function App() {
-
-  
-
-
   return (
       
        <ContextProvider >
@@ -18,8 +11,6 @@ function App() {
           <Outlet />
           <Footer />
         </ContextProvider>
-   
-
   );
 }
 
