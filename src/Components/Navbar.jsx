@@ -16,6 +16,9 @@ const Navbar = () => {
     color: ${state.theme.text};
     border-bottom: 0.5px solid ${state.theme.text};
     border-top: 0.5px solid ${state.theme.text};
+    justify-content: space-around;
+    width:100%;
+    padding-right: 20px;
   `;
 
   const StyledLink = styled(Link)`

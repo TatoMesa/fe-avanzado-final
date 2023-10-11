@@ -15,6 +15,9 @@ const Favs = () => {
   const Container = styled.div`
     background-color: ${state.theme.bgc};
     color: ${state.theme.text};
+    width:100%;
+    padding: 20px;
+    margin:0;
   `;
 
   const storedCards = JSON.parse(localStorage.getItem("featuredDentist"));
@@ -33,12 +36,12 @@ const Favs = () => {
     <Container>
       <h1> {response } </h1>
       <div className="card-grid">
-        {storedCards.map((element, id) => {
+        {storedCards ? storedCards.map((element, id) => {
           return (
             <Card key={id} {...element}>{" "}    {/* Aqui deberias renderizar las cards */}
             </Card>
           );
-        })}
+        }) : null}
       </div>
     </Container>
   );

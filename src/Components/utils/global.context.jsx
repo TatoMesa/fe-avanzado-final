@@ -1,11 +1,12 @@
 import { createContext, useCallback, useEffect, useMemo, useReducer } from "react";
 import { Themes } from "./themes";
 
+const featuredDentist = JSON.parse(localStorage.getItem("featuredDentist"));
 const initialState = {
   loading: false,
   error: null,
   dentists: [],
-  sizeLocalStorage: JSON.parse(localStorage.getItem("featuredDentist")).length,
+  sizeLocalStorage: featuredDentist ? featuredDentist.length : 0,
   theme: Themes.light,
 };
 

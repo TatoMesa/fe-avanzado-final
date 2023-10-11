@@ -11,15 +11,13 @@ const StyledDiv = styled.div`
     background-color: ${state.theme.bgc};
     color: ${state.theme.text};
     display: flex;
-    justify-content: space-around;
     flex-direction: column;
     align-items: center;
-    width: 100%;
-    padding-top: 15px; 
-    padding-bottom: 15px; 
+    padding: 20px; 
+    width:100%;
 `;
 
-  return (
+return (
     <StyledDiv>
       <h2>¿Queres saber más?</h2>
       <h3>Envíanos tu pregunta y nos pondremos en contacto via mail</h3>

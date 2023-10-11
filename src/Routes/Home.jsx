@@ -15,7 +15,7 @@ const Home = () => {
     background-color: ${state.theme.bgc};
     color: ${state.theme.text};
     width:100%;
-    padding:0;
+    padding:20px;
     margin:0;
   `;
 

@@ -12,10 +12,8 @@ const Card = ( dentist) => {
   const StyledLink = styled(Link)`
     background-color: ${state.theme.bgc};
     color: ${state.theme.text};
-    display: flex;
-    justify-content: space-around;
-    flex-direction: column;
-    align-items: center;
+    display: grid;
+    justify-items: center;
     width: 200px;
     padding: 0.5rem;
     border: 0.5px solid ${state.theme.text};
@@ -26,8 +24,8 @@ const Card = ( dentist) => {
     background-color: ${state.theme.bgc};
     color: ${props => props.$pressed ? 'red' : 'white'};
     position: relative;
-    top: -12%;
-    left: 70%;
+    top: -10%;
+    left: 170px;
     border: none;
     font-size: 25px;
   `;

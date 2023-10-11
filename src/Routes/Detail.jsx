@@ -15,19 +15,14 @@ const Detail = () => {
   const { state } = useContext(ContextGlobal);
 
   const Container = styled.div`
-    height: 200px;
     background-color: ${state.theme.bgc};
     color: ${state.theme.text};
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: center;
-    align-items: stretch;
-    flex-direction: row; 
-    padding-top:35px;
-    padding-bottom:35px;
-    margin-left: auto;
-    margin-right: auto;
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    padding: 45px;
     gap: 10px;
+    width:100%;
+    padding:20px;
   `;
 
   const dentists = state.dentists;
@@ -37,15 +32,16 @@ const Detail = () => {
     
   return (
     <Container>
+      <p></p>
       <img src="/public/images/doctor.jpg" alt="Imagen Doctor" />
       <td>
         <td> Datos del Odontologo seleccionado </td>
-        <tr> Nombre: {dentistSelected.name}</tr>
-        <tr> Usuario: {dentistSelected.username}</tr>
-        <tr> Email: {dentistSelected.email}</tr>
-        <tr> Telefono: {dentistSelected.phone}</tr>
-        <tr> Sitio Web: {dentistSelected.website}</tr>
-      </td>
+          <tr> Nombre: {dentistSelected.name}</tr>
+          <tr> Usuario: {dentistSelected.username}</tr>
+          <tr> Email: {dentistSelected.email}</tr>
+          <tr> Telefono: {dentistSelected.phone}</tr>
+          <tr> Sitio Web: {dentistSelected.website}</tr></td>
+      <p></p>
     </Container> 
   )
 };

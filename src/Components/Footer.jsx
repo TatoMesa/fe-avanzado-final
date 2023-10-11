@@ -11,11 +11,15 @@ const Footer = () => {
   color: ${state.theme.text};
   border-bottom: 0.5px solid ${state.theme.text};
   border-top: 0.5px solid ${state.theme.text};
+  width: 100%;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 20px;
 `;
 
   return (
     <Footer>
-      <h3> Powered by </h3>
+      <p> Powered by </p>
       <img src="./images/DM.png" alt="DM-logo" />
     </Footer>
   );
